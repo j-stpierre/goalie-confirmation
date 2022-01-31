@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goalie-scraper-deployment
+  labels:
+    app: goalie-scraper
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: goalie-scraper
+  template:
+    metadata:
+      labels:
+        app: goalie-scraper
+    spec:
+      containers:
+      - name: goalie-scraper
+        image: goalie-scraper
+        env:
+        - name: SLACK_WEBHOOK_URL
+          value: <SLACK_WEBHOOK>
+        - name: MONGO_URL
+          value: <MONG_URL>
+        - name: SCRAPE_URL
+          value: <SCRAPE_URL>
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80
