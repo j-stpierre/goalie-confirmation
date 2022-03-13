@@ -20,11 +20,11 @@ spec:
         image: goalie-scraper
         env:
         - name: SLACK_WEBHOOK_URL
-          value: <SLACK_WEBHOOK>
+          value: $SLACK_WEBHOOK_URL
         - name: MONGO_URL
-          value: <MONG_URL>
+          value: $MONGO_URL
         - name: SCRAPE_URL
-          value: <SCRAPE_URL>
+          value: $SCRAPE_URL
         imagePullPolicy: Never
         ports:
         - containerPort: 80
